@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A school project that classifies photos as peacock or sparrow.">
+  <title>Peacock vs Sparrow AI</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.17.0/dist/tf.min.js"></script>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <p class="eyebrow">IMAGE CLASSIFICATION PROJECT</p>
+      <h1>🦚 Peacock <span>vs</span> Sparrow 🐦</h1>
+      <p class="intro">Choose a photo and let the trained model predict which bird it shows.</p>
+    </header>
+
+    <section class="panel">
+      <label class="upload" for="imageInput">
+        <span class="upload-icon">＋</span>
+        <strong>Choose a bird photo</strong>
+        <span>JPG, PNG or another common image format</span>
+      </label>
+      <input id="imageInput" type="file" accept="image/*">
+      <img id="preview" alt="Selected image preview" hidden>
+      <button id="predictButton" disabled>Predict bird</button>
+      <p id="status" role="status">Loading model…</p>
+      <div id="result" hidden aria-live="polite">
+        <p class="eyebrow">PREDICTION</p>
+        <h2 id="prediction">—</h2>
+        <p>Model confidence: <strong id="confidence">—</strong></p>
+        <p class="small">Confidence is not the same as model accuracy. Unusual images may be misclassified.</p>
+      </div>
+    </section>
+
+    <section class="panel metrics">
+      <h2>Model evaluation</h2>
+      <p id="evaluationStatus">Evaluation report loads after a successful training workflow.</p>
+      <div class="metric-grid">
+        <div><span>Accuracy</span><strong id="accuracy">—</strong></div>
+        <div><span>Precision (macro)</span><strong id="precision">—</strong></div>
+        <div><span>Recall (macro)</span><strong id="recall">—</strong></div>
+        <div><span>F1 (macro)</span><strong id="f1">—</strong></div>
+      </div>
+      <p id="evalNote" class="small"></p>
+      <p><a href="./evaluation/confusion-matrix.png">View confusion matrix</a> · <a href="./evaluation/classification_report.csv">Classification report CSV</a></p>
+    </section>
+
+    <footer>School project demo · Images are processed in your browser and are not sent to a prediction server.</footer>
+  </main>
+  <script src="./app.js"></script>
+</body>
+</html>
